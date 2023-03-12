@@ -6,7 +6,7 @@ import * as S from './style';
 
 function AddTodo() {
 	const [todo, setTodo] = useState();
-	const { todoList, setTodoList } = useContext(TodoContext);
+	const { setTodoList } = useContext(TodoContext);
 
 	const onKeyDown = async (e) => {
 		if (e.key === 'Enter') {

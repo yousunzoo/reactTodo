@@ -24,7 +24,7 @@ function Board() {
 				<S.H1>Todo List</S.H1>
 				<TodoContext.Provider value={{ todoList, setTodoList }}>
 					<AddTodo />
-					<TodoList todoList={todoList} />
+					<TodoList />
 				</TodoContext.Provider>
 			</S.Board>
 		</S.BoardArea>
