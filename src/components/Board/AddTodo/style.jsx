@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const AddTodo = styled.div`
 	width: 90%;
+	min-width: 600px;
 	margin: auto;
 	padding: 20px 100px;
 	box-sizing: border-box;
@@ -20,7 +21,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-	width: 10%;
+	width: 42px;
 	height: 40px;
 	border: 2px solid ${({ theme }) => theme.addButton};
 	background-color: ${({ theme }) => theme.addButton};

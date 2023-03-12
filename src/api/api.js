@@ -5,7 +5,7 @@ export const createTodo = async (todo) => {
 	return response.data;
 };
 
-export const getTodo = async () => {
+export const getTodos = async () => {
 	const response = await axiosAPI.get('');
 	return response.data;
 };

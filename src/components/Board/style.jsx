@@ -15,8 +15,7 @@ export const H1 = styled.h1`
 
 export const Board = styled.div`
 	width: 100%;
-	height: 500px;
-	border-radius: 10px;
+	height: 540px;
 	background-color: ${({ theme }) => theme.board};
 	transition: all 0.2s ease-in;
 `;
