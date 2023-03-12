@@ -18,6 +18,9 @@ export const Input = styled.input`
 	&:focus {
 		outline: none;
 	}
+	&.noText::placeholder {
+		color: ${({ theme }) => theme.addButton};
+	}
 `;
 
 export const Button = styled.button`
