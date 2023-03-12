@@ -4,6 +4,7 @@ import SwitchTheme from './components/SwitchTheme';
 import GlobalStyle from './styles/globalStyle';
 import theme from './styles/theme';
 import * as S from './style';
+import Board from './components/Board';
 
 export const UserThemeContext = createContext();
 
@@ -15,6 +16,7 @@ function App() {
 			<S.Body className='App'>
 				<UserThemeContext.Provider value={{ isDark, setIsDark }}>
 					<SwitchTheme />
+					<Board />
 				</UserThemeContext.Provider>
 			</S.Body>
 		</ThemeProvider>

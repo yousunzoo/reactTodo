@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Body = styled.div`
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
-	padding: 100px;
-	box-sizing: border-box;
 	height: 100vh;
 	background-color: ${({ theme }) => theme.background};
 	transition: all 0.1s ease-in;

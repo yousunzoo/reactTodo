@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
 	position: absolute;
-	top: 60px;
-	left: 60px;
+	top: 50px;
+	left: 50px;
 	width: 50px;
 	height: 50px;
 	font-size: 20px;
