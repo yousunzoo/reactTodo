@@ -15,6 +15,12 @@ function EditTodo() {
 
 	return (
 		<S.EditTodoArea>
+			<S.Modal
+				onClick={(e) => {
+					e.stopPropagation();
+					setIsEditing(false);
+				}}
+			/>
 			<S.EditTodo>
 				<h2>할 일을 수정해주세요</h2>
 				<S.EditArea>
