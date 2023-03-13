@@ -13,7 +13,7 @@ const dark = {
 	board: '#eee',
 	delete: '#531616',
 	title: '#333',
-	add: '#01564D',
+	addButton: '#01564D',
 	switchButton: '#585E66',
 	switchButtonHover: '#dddddd',
 };

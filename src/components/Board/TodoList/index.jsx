@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { TodoContext } from '..';
-import { deleteTodo, getTodos } from '../../../api/api';
 import TodoItem from '../TodoItem';
 import * as S from './style';
 

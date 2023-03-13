@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { TodoContext } from '..';
-import { createTodo, getTodos } from '../../../api/api';
+import { createTodoAPI, getTodosAPI } from '../../../api/api';
 import * as S from './style';
 
 function AddTodo() {
@@ -15,7 +15,7 @@ function AddTodo() {
 				setIsFilled(false);
 				return;
 			}
-			await createTodo(todo);
+			await createTodoAPI(todo);
 			const result = await getTodos();
 			setTodoList([...result]);
 			setTodo('');
@@ -30,8 +30,8 @@ function AddTodo() {
 			setIsFilled(false);
 			return;
 		}
-		await createTodo(todo);
-		const result = await getTodos();
+		await createTodoAPI(todo);
+		const result = await getTodosAPI();
 		setTodoList([...result]);
 		setTodo('');
 	};

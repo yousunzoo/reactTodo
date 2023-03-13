@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TodoContext } from '..';
-import { deleteTodo, getTodos } from '../../../api/api';
+import { deleteTodoAPI, getTodosAPI } from '../../../api/api';
 import * as S from './style';
 
 function TodoItem({ todo }) {
-	const { setTodoList } = useContext(TodoContext);
+	const { setTodoList, setIsEditing, setTodoItem } = useContext(TodoContext);
 
-	const onClick = async (id) => {
-		await deleteTodo(id);
-		const result = await getTodos();
+	const handleDeleteItem = async (id) => {
+		await deleteTodoAPI(id);
+		const result = await getTodosAPI();
 		setTodoList([...result]);
 	};
 
@@ -16,11 +16,18 @@ function TodoItem({ todo }) {
 		<S.TodoLi key={todo.id}>
 			<input type='checkbox' readOnly={true} checked={todo.done} />
 			<span className='todoText'>{todo.title}</span>
-			<button className='editTodo'>수정</button>
+			<button
+				className='editTodo'
+				onClick={() => {
+					setIsEditing(true);
+					setTodoItem(todo);
+				}}>
+				수정
+			</button>
 			<button
 				className='deleteTodo'
 				onClick={() => {
-					onClick(todo.id);
+					handleDeleteItem(todo.id);
 				}}>
 				삭제
 			</button>
