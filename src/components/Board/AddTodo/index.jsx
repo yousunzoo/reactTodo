@@ -16,7 +16,7 @@ function AddTodo() {
 				return;
 			}
 			await createTodoAPI(todo);
-			const result = await getTodos();
+			const result = await getTodosAPI();
 			setTodoList([...result]);
 			setTodo('');
 		}
