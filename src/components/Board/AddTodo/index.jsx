@@ -9,6 +9,7 @@ function AddTodo() {
 	const { setTodoList } = useContext(TodoContext);
 
 	const onKeyDown = async (e) => {
+		if (e.nativeEvent.isComposing) return;
 		if (e.key === 'Enter') {
 			if (todo === '') {
 				setIsFilled(false);

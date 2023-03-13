@@ -17,6 +17,7 @@ function TodoList() {
 					<S.TodoLi key={todo.id}>
 						<input type='checkbox' readOnly={true} checked={todo.done} />
 						<span className='todoText'>{todo.title}</span>
+						<button className='editTodo'>수정</button>
 						<button
 							className='deleteTodo'
 							onClick={() => {

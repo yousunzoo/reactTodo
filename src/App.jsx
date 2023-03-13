@@ -16,8 +16,8 @@ function App() {
 			<S.Body className='App'>
 				<UserThemeContext.Provider value={{ isDark, setIsDark }}>
 					<SwitchTheme />
-					<Board />
 				</UserThemeContext.Provider>
+				<Board />
 			</S.Body>
 		</ThemeProvider>
 	);
