@@ -1,12 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html,
+   html,
 body,
 div,
 span,
@@ -130,11 +125,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-button {
-  outline: none;
-  border:none;
-  background-color: transparent;
-	cursor:pointer;
+#root {
+  width: 100%;
+  height:100vh;
+  background-color:${({ theme }) => theme.lightTheme.background}
 }
 `;

@@ -1,24 +1,18 @@
-import { createContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import SwitchTheme from './components/SwitchTheme';
+import Calendar from './components/Calender';
+import TodoList from './components/TodoList';
 import GlobalStyle from './styles/globalStyle';
+import { Container } from './styles/style';
 import theme from './styles/theme';
-import * as S from './style';
-import Board from './components/Board';
-
-export const UserThemeContext = createContext();
 
 function App() {
-	const [isDark, setIsDark] = useState(false);
 	return (
-		<ThemeProvider theme={isDark ? theme.dark : theme.light}>
+		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-			<S.Body className='App'>
-				<UserThemeContext.Provider value={{ isDark, setIsDark }}>
-					<SwitchTheme />
-				</UserThemeContext.Provider>
-				<Board />
-			</S.Body>
+			<Container>
+				<Calendar />
+				<TodoList />
+			</Container>
 		</ThemeProvider>
 	);
 }
