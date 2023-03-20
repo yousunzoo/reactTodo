@@ -125,9 +125,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+button {
+	border:none;
+}
 #root {
   width: 100%;
   height:100vh;
-  background-color:${({ theme }) => theme.lightTheme.background}
+  background-color:${({ theme }) => theme.background};
+	color:${({ theme }) => theme.fontColor}
 }
 `;
