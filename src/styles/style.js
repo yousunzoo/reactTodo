@@ -4,6 +4,8 @@ export const Container = styled.div`
 	position: relative;
 	width: 360px;
 	height: 100%;
-	background-color: #fff;
+	background-color: ${({ theme }) => theme.background};
 	margin: auto;
+	padding: 20px 0;
+	box-sizing: border-box;
 `;

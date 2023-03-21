@@ -127,11 +127,17 @@ table {
 }
 button {
 	border:none;
+	background-color: transparent;
+	cursor: pointer;
+}
+input {
+	outline: none;
+	border: none;
 }
 #root {
   width: 100%;
   height:100vh;
   background-color:${({ theme }) => theme.background};
-	color:${({ theme }) => theme.fontColor}
+	color:${({ theme }) => theme.color}
 }
 `;
