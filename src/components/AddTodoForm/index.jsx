@@ -9,6 +9,10 @@ function AddTodoForm() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+		if (todo.current.value == '') {
+			todo.current.focus();
+			return;
+		}
 		dispatch(addTodo(todo.current.value));
 		todo.current.value = '';
 	};
