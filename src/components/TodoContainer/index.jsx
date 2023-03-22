@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTodos } from '../../store/slices/todoSlice';
 import AddTodoForm from '../AddTodoForm';
 import TabList from '../TabList';
+import TodoList from '../TodoList';
 
 function TodoContainer() {
+	const dispatch = useDispatch();
+	const { isLoading, todoList } = useSelector((state) => state.todo);
+	useEffect(() => {
+		dispatch(getTodos());
+	}, []);
 	return (
 		<div>
 			<TabList />
+			<TodoList todoList={todoList} />
 			<AddTodoForm />
 		</div>
 	);
