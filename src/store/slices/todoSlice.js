@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const addTodo = createAsyncThunk('todo/add', async (todo) => {
-	const response = await axiosInstance.post('', todo);
+	const response = await axiosInstance.post('', { title: todo });
 	return response.data;
 });
 export const removeTodo = createAsyncThunk('todo/remove', async (id) => {
@@ -40,6 +40,16 @@ export const todoSlice = createSlice({
 			state.todoList = action.payload;
 		},
 		[getTodos.rejected]: (state) => {
+			state.loading = false;
+		},
+		[addTodo.pending]: (state) => {
+			state.loading = true;
+		},
+		[addTodo.fulfilled]: (state, action) => {
+			state.loading = false;
+			state.todoList.push(action.payload);
+		},
+		[addTodo.rejected]: (state) => {
 			state.loading = false;
 		},
 	},

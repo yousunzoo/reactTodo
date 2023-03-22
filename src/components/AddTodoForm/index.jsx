@@ -1,16 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../store/slices/todoSlice';
 import * as S from './style';
 
 function AddTodoForm() {
 	const todo = useRef();
-	const addTodo = (e) => {
+	const dispatch = useDispatch();
+
+	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log(todo.current.value);
+		dispatch(addTodo(todo.current.value));
+		todo.current.value = '';
 	};
 	return (
-		<S.AddTodoForm>
+		<S.AddTodoForm onSubmit={onSubmit}>
 			<S.AddInput placeholder='할 일을 입력해주세요' ref={todo} />
-			<S.AddButton onClick={addTodo}>
+			<S.AddButton>
 				<span className='material-symbols-outlined'>add_box</span>
 			</S.AddButton>
 		</S.AddTodoForm>
