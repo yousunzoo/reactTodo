@@ -4,6 +4,7 @@ import { axiosInstance } from '../../apis/axios';
 const initialState = {
 	loading: false,
 	todoList: [],
+	isDeleted: false,
 };
 
 export const addTodo = createAsyncThunk('todo/add', async (todo) => {
@@ -19,7 +20,7 @@ export const getTodos = createAsyncThunk('todo/get', async () => {
 	return response.data;
 });
 export const editTodo = createAsyncThunk('todo/edit', async (todo) => {
-	const response = await axiosInstance.put(`/${todo.id}`);
+	const response = await axiosInstance.put(`/${todo.id}`, { title: todo.title, done: todo.done, order: todo.order });
 	return response.data;
 });
 export const reorderTodos = createAsyncThunk('todo/reorder', async (todos) => {
@@ -34,6 +35,7 @@ export const todoSlice = createSlice({
 	extraReducers: {
 		[getTodos.pending]: (state) => {
 			state.loading = true;
+			state.isDeleted = false;
 		},
 		[getTodos.fulfilled]: (state, action) => {
 			state.loading = false;
@@ -44,12 +46,34 @@ export const todoSlice = createSlice({
 		},
 		[addTodo.pending]: (state) => {
 			state.loading = true;
+			state.isDeleted = false;
 		},
 		[addTodo.fulfilled]: (state, action) => {
 			state.loading = false;
 			state.todoList.push(action.payload);
 		},
 		[addTodo.rejected]: (state) => {
+			state.loading = false;
+		},
+		[removeTodo.pending]: (state) => {
+			state.loading = true;
+		},
+		[removeTodo.fulfilled]: (state) => {
+			state.loading = false;
+			state.isDeleted = true;
+		},
+		[removeTodo.rejected]: (state) => {
+			state.loading = false;
+			state.isDeleted = false;
+		},
+		[editTodo.pending]: (state) => {
+			state.loading = true;
+			state.isDeleted = false;
+		},
+		[editTodo.fulfilled]: (state) => {
+			state.loading = false;
+		},
+		[editTodo.rejected]: (state) => {
 			state.loading = false;
 		},
 	},

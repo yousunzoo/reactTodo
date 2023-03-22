@@ -7,10 +7,10 @@ import TodoList from '../TodoList';
 
 function TodoContainer() {
 	const dispatch = useDispatch();
-	const { isLoading, todoList } = useSelector((state) => state.todo);
+	const { isLoading, todoList, isDeleted } = useSelector((state) => state.todo);
 	useEffect(() => {
 		dispatch(getTodos());
-	}, []);
+	}, [isDeleted]);
 	return (
 		<div>
 			<TabList />

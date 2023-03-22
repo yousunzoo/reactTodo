@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TodoLi = styled.li`
-	width: 100%;
+	width: 410px;
 	display: flex;
 	align-items: center;
 	justify-content: baseline;
@@ -11,6 +11,7 @@ export const TodoLi = styled.li`
 	.todo-title {
 		position: relative;
 		padding: 0 2px;
+		box-sizing: border-box;
 		&::after {
 			position: absolute;
 			display: block;
@@ -39,4 +40,15 @@ export const Checkbox = styled.label`
 export const DragButton = styled.button`
 	color: ${({ theme }) => theme.color};
 	margin-left: auto;
+`;
+
+export const DeleteButton = styled.button`
+	width: 40px;
+	display: block;
+	background-color: red;
+	margin-left: 10px;
+	border-radius: 20px 0 0 20px;
+	span {
+		margin-left: 4px;
+	}
 `;
