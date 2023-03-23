@@ -9,9 +9,11 @@ export const TabContainer = styled.div`
 `;
 
 export const TabButton = styled.button`
-	display: block;
+	display: flex;
 	width: 30px;
 	height: 30px;
+	justify-content: center;
+	align-items: center;
 	margin-left: 6px;
 	span {
 		color: ${({ theme }) => theme.color};

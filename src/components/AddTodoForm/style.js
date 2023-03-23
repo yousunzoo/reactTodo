@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AddTodoForm = styled.form`
 	position: absolute;
 	display: flex;
-	width: 300px;
+	width: 320px;
 	justify-content: space-between;
 	align-items: center;
 	bottom: 0;
@@ -20,11 +20,13 @@ export const AddInput = styled.input`
 `;
 
 export const AddButton = styled.button`
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 40px;
 	height: 40px;
 	color: ${({ theme }) => theme.color};
 	span {
-		font-size: 40px;
+		font-size: 36px;
 	}
 `;

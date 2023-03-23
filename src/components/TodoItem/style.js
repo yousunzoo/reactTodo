@@ -32,18 +32,21 @@ export const TodoTitle = styled.input`
 	}
 `;
 export const EditButton = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: ${({ theme }) => theme.color};
 	width: 30px;
+	height: 30px;
 	margin-left: auto;
 `;
 
 export const DeleteButton = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: ${({ theme }) => theme.color};
 	width: 30px;
-	display: block;
-	border-radius: 20px 0 0 20px;
-	span {
-		font-size: 22px;
-		margin-left: 4px;
-	}
+	height: 30px;
+	margin-left: 6px;
 `;
