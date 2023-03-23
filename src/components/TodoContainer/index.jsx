@@ -10,12 +10,12 @@ import TodoList from '../TodoList';
 export const ModalContext = createContext();
 function TodoContainer() {
 	const dispatch = useDispatch();
-	const { isLoading, todoList, isDeleted } = useSelector((state) => state.todo);
+	const { isLoading, todoList } = useSelector((state) => state.todo);
 	const [activateModal, setActivateModal] = useState(false);
 
 	useEffect(() => {
 		dispatch(getTodos());
-	}, [isDeleted]);
+	}, []);
 
 	const toggleActivetModal = () => {
 		setActivateModal((prev) => !prev);

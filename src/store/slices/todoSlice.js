@@ -4,7 +4,6 @@ import { axiosInstance } from '../../apis/axios';
 const initialState = {
 	isLoading: false,
 	todoList: [],
-	isDeleted: false,
 };
 
 export const addTodo = createAsyncThunk('todo/add', async (todo) => {
@@ -13,7 +12,7 @@ export const addTodo = createAsyncThunk('todo/add', async (todo) => {
 });
 export const removeTodo = createAsyncThunk('todo/remove', async (id) => {
 	const response = await axiosInstance.delete(`/${id}`);
-	return response.data;
+	return { data: response.data, id: id };
 });
 
 export const getTodos = createAsyncThunk('todo/get', async () => {
@@ -36,7 +35,6 @@ export const todoSlice = createSlice({
 	extraReducers: {
 		[getTodos.pending]: (state) => {
 			state.isLoading = true;
-			state.isDeleted = false;
 		},
 		[getTodos.fulfilled]: (state, action) => {
 			state.isLoading = false;
@@ -47,7 +45,6 @@ export const todoSlice = createSlice({
 		},
 		[addTodo.pending]: (state) => {
 			state.isLoading = true;
-			state.isDeleted = false;
 		},
 		[addTodo.fulfilled]: (state, action) => {
 			state.isLoading = false;
@@ -59,17 +56,15 @@ export const todoSlice = createSlice({
 		[removeTodo.pending]: (state) => {
 			state.isLoading = true;
 		},
-		[removeTodo.fulfilled]: (state) => {
+		[removeTodo.fulfilled]: (state, action) => {
 			state.isLoading = false;
-			state.isDeleted = true;
+			state.todoList = state.todoList.filter((item) => item.id !== action.payload.id);
 		},
 		[removeTodo.rejected]: (state) => {
 			state.isLoading = false;
-			state.isDeleted = false;
 		},
 		[editTodo.pending]: (state) => {
 			state.isLoading = true;
-			state.isDeleted = false;
 		},
 		[editTodo.fulfilled]: (state) => {
 			state.isLoading = false;
