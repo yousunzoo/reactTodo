@@ -23,10 +23,6 @@ export const editTodo = createAsyncThunk('todo/edit', async (todo) => {
 	const response = await axiosInstance.put(`/${todo.id}`, { title: todo.title, done: todo.done, order: todo.order });
 	return response.data;
 });
-export const reorderTodos = createAsyncThunk('todo/reorder', async (todos) => {
-	const response = await axiosInstance.put('/reorder');
-	return response.data;
-});
 
 export const todoSlice = createSlice({
 	name: 'todo',
@@ -64,7 +60,7 @@ export const todoSlice = createSlice({
 			state.isLoading = false;
 		},
 		[editTodo.pending]: (state) => {
-			state.isLoading = true;
+			state.isLoading = false;
 		},
 		[editTodo.fulfilled]: (state) => {
 			state.isLoading = false;

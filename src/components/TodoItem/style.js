@@ -8,25 +8,6 @@ export const TodoLi = styled.li`
 	height: 30px;
 	margin-bottom: 10px;
 	font-size: 18px;
-	.todo-title {
-		position: relative;
-		padding: 0 2px;
-		box-sizing: border-box;
-		&::after {
-			position: absolute;
-			display: block;
-			content: '';
-			top: 6px;
-			left: 0;
-			width: 0;
-			height: 1px;
-			background-color: ${({ theme }) => theme.color};
-			transition: all 0.2s ease-in;
-		}
-		&.activated::after {
-			width: 100%;
-		}
-	}
 `;
 
 export const Checkbox = styled.label`
@@ -36,8 +17,19 @@ export const Checkbox = styled.label`
 		display: none;
 	}
 `;
-
-export const DragButton = styled.button`
+export const TodoTitle = styled.input`
+	position: relative;
+	display: block;
+	font-size: 18px;
+	&.done {
+		text-decoration: line-through;
+	}
+	&:disabled {
+		background-color: transparent;
+		color: inherit;
+	}
+`;
+export const EditButton = styled.button`
 	color: ${({ theme }) => theme.color};
 	margin-left: auto;
 `;

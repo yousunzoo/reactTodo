@@ -6,7 +6,8 @@ import * as S from './style';
 function TodoItem({ todo }) {
 	const dragEl = useRef();
 	const dispatch = useDispatch();
-	const [isChecked, setIsChecked] = useState(todo.done);
+	const [userTodo, setUserTodo] = useState({ ...todo });
+	const [isDisabled, setDisabled] = useState(true);
 	const [isDragging, setIsDragging] = useState(false);
 	const [startX, setStartX] = useState(0);
 	const [currentX, setCurrentX] = useState(0);
@@ -32,17 +33,25 @@ function TodoItem({ todo }) {
 		setCurrentX(-50);
 	};
 	const handleDone = () => {
-		setIsChecked(!isChecked);
-		dispatch(editTodo({ ...todo, done: !isChecked }));
+		setUserTodo({ ...userTodo, done: !userTodo.done });
+		dispatch(editTodo({ ...userTodo, done: !userTodo.done }));
 	};
 
 	const handleDeleteItem = () => {
-		dispatch(removeTodo(todo.id));
+		dispatch(removeTodo(userTodo.id));
+	};
+	const handleEditTitle = (e) => {
+		setUserTodo({ ...userTodo, title: e.target.value });
+	};
+	const handleTitleInput = () => {
+		setDisabled(!isDisabled);
+		if (!isDisabled) {
+			dispatch(editTodo(userTodo));
+		}
 	};
 
 	return (
 		<S.TodoLi
-			ref={dragEl}
 			style={{
 				position: 'relative',
 				left: currentX,
@@ -52,13 +61,13 @@ function TodoItem({ todo }) {
 			onMouseMove={handleMouseMove}
 			onMouseUp={handleMouseUp}>
 			<S.Checkbox>
-				<input type='checkbox' checked={isChecked} onChange={handleDone} />
-				<span className='material-symbols-outlined'>{isChecked ? 'check_circle' : 'radio_button_unchecked'}</span>
+				<input type='checkbox' checked={userTodo.done} onChange={handleDone} />
+				<span className='material-symbols-outlined'>{userTodo.done ? 'check_circle' : 'radio_button_unchecked'}</span>
 			</S.Checkbox>
-			<span className={isChecked ? 'activated todo-title' : 'todo-title'}>{todo.title}</span>
-			<S.DragButton>
-				<span className='material-symbols-outlined'>drag_handle</span>
-			</S.DragButton>
+			<S.TodoTitle type='text' className={userTodo.done && 'done'} value={userTodo.title} disabled={isDisabled} onChange={handleEditTitle} />
+			<S.EditButton ref={dragEl} onClick={handleTitleInput}>
+				<span className='material-symbols-outlined'>{isDisabled ? 'edit' : 'done'}</span>
+			</S.EditButton>
 			<S.DeleteButton onClick={handleDeleteItem}>
 				<span className='material-symbols-outlined'>delete</span>
 			</S.DeleteButton>
