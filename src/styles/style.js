@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	position: relative;
-	width: 360px;
+	width: 340px;
 	height: 100%;
 	background-color: ${({ theme }) => theme.background};
 	margin: auto;

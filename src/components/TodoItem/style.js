@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TodoLi = styled.li`
-	width: 410px;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: baseline;
@@ -35,10 +35,9 @@ export const EditButton = styled.button`
 `;
 
 export const DeleteButton = styled.button`
+	color: ${({ theme }) => theme.color};
 	width: 40px;
 	display: block;
-	background-color: red;
-	margin-left: 10px;
 	border-radius: 20px 0 0 20px;
 	span {
 		margin-left: 4px;
