@@ -3,16 +3,16 @@ import styled from 'styled-components';
 export const AddTodoForm = styled.form`
 	position: absolute;
 	display: flex;
-	width: 320px;
+	width: 300px;
 	justify-content: space-between;
 	align-items: center;
 	bottom: 0;
-	padding: 20px 0;
+	padding: 20px 10px;
 	box-sizing: border-box;
 `;
 
 export const AddInput = styled.input`
-	width: 260px;
+	width: 240px;
 	height: 30px;
 	border-radius: 10px;
 	padding: 0 20px;

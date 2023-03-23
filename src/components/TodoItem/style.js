@@ -6,6 +6,8 @@ export const TodoLi = styled.li`
 	align-items: center;
 	justify-content: baseline;
 	height: 30px;
+	padding: 0 10px;
+	box-sizing: border-box;
 	margin-bottom: 10px;
 	font-size: 18px;
 `;
@@ -20,7 +22,7 @@ export const Checkbox = styled.label`
 export const TodoTitle = styled.input`
 	position: relative;
 	display: block;
-	font-size: 18px;
+	width: 160px;
 	&.done {
 		text-decoration: line-through;
 	}
@@ -31,15 +33,17 @@ export const TodoTitle = styled.input`
 `;
 export const EditButton = styled.button`
 	color: ${({ theme }) => theme.color};
+	width: 30px;
 	margin-left: auto;
 `;
 
 export const DeleteButton = styled.button`
 	color: ${({ theme }) => theme.color};
-	width: 40px;
+	width: 30px;
 	display: block;
 	border-radius: 20px 0 0 20px;
 	span {
+		font-size: 22px;
 		margin-left: 4px;
 	}
 `;
