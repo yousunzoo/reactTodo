@@ -21,7 +21,7 @@ export const getTodos = createAsyncThunk('todo/get', async () => {
 });
 export const editTodo = createAsyncThunk('todo/edit', async (todo) => {
 	const response = await axiosInstance.put(`/${todo.id}`, { title: todo.title, done: todo.done, order: todo.order });
-	return response.data;
+	return { data: response.data, todo };
 });
 
 export const todoSlice = createSlice({
@@ -62,8 +62,10 @@ export const todoSlice = createSlice({
 		[editTodo.pending]: (state) => {
 			state.isLoading = false;
 		},
-		[editTodo.fulfilled]: (state) => {
+		[editTodo.fulfilled]: (state, action) => {
 			state.isLoading = false;
+			const idx = state.todoList.findIndex((obj) => obj.id === action.payload.todo.id);
+			state.todoList.splice(idx, 1, action.payload.todo);
 		},
 		[editTodo.rejected]: (state) => {
 			state.isLoading = false;
