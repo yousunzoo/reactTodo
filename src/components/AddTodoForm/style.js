@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 export const AddTodoForm = styled.form`
+	position: absolute;
 	display: flex;
-	width: 100%;
+	width: 320px;
 	justify-content: space-between;
 	align-items: center;
-	position: absolute;
 	bottom: 0;
-	padding: 20px;
+	padding: 20px 0;
 	box-sizing: border-box;
 `;
 
 export const AddInput = styled.input`
-	width: 270px;
+	width: 260px;
 	height: 30px;
 	border-radius: 10px;
 	padding: 0 20px;

@@ -21,14 +21,14 @@ function TodoContainer() {
 		setActivateModal((prev) => !prev);
 	};
 	return (
-		<div>
+		<>
 			<ModalContext.Provider value={{ activateModal, setActivateModal }}>
 				<TabList toggleActivetModal={toggleActivetModal} />
 				{isLoading ? <Loader /> : <TodoList todoList={todoList} />}
 				<AddTodoForm />
 				<Modal todoList={todoList} toggleActivetModal={toggleActivetModal} />
 			</ModalContext.Provider>
-		</div>
+		</>
 	);
 }
 

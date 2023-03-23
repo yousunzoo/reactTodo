@@ -6,6 +6,6 @@ export const Container = styled.div`
 	height: 100%;
 	background-color: ${({ theme }) => theme.background};
 	margin: auto;
-	padding: 20px 0;
+	padding: 20px 10px;
 	box-sizing: border-box;
 `;
